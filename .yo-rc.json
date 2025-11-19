@@ -1,0 +1,33 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "authenticationType": "session",
+    "baseName": "taller1",
+    "buildTool": "maven",
+    "cacheProvider": "no",
+    "clientFramework": "react",
+    "clientTestFrameworks": [],
+    "clientTheme": "cyborg",
+    "clientThemeVariant": "dark",
+    "creationTimestamp": 1763517053241,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "enableHibernateCache": null,
+    "enableTranslation": false,
+    "entities": [],
+    "feignClient": null,
+    "jhipsterVersion": "8.11.0",
+    "microfrontend": null,
+    "microfrontends": [],
+    "nativeLanguage": "en",
+    "packageName": "com.mycompany.myapp",
+    "prodDatabaseType": "postgresql",
+    "reactive": false,
+    "rememberMeKey": "2ed1f2d6bfac70046cf9948133ef704b11211daba0e10913c47aa260103f3de0751639865dfa706c36d0d10d096659acb639",
+    "serverPort": null,
+    "serviceDiscoveryType": null,
+    "syncUserWithIdp": null,
+    "testFrameworks": [],
+    "withAdminUi": true
+  }
+}
