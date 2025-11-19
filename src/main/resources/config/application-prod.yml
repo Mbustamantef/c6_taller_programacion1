@@ -26,6 +26,9 @@ management:
         enabled: false
 
 spring:
+  docker:
+    compose:
+      enabled: false # Disabled - we manage Docker containers manually
   devtools:
     restart:
       enabled: false
