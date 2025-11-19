@@ -1,0 +1,39 @@
+{
+  "annotations": {
+    "changelogDate": "20251119223621"
+  },
+  "applications": "*",
+  "documentation": "Modelo sencillo de negocio para jdl-estudio\\nCliente, Producto, Factura, DetalleFactura y Pago",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "rucCi",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telefono",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "direccion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fechaAlta",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "name": "Cliente",
+  "pagination": "infinite-scroll",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

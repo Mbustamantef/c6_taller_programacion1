@@ -1,0 +1,74 @@
+/**
+ * Modelo sencillo de negocio para jdl-estudio
+ * Cliente, Producto, Factura, DetalleFactura y Pago
+ */
+
+entity Cliente {
+    nombre String required
+    rucCi String
+    telefono String
+    email String
+    direccion String
+    fechaAlta LocalDate
+}
+
+entity Producto {
+    nombre String required
+    descripcion String
+    precioUnitario BigDecimal required
+    activo Boolean required
+}
+
+/**
+ * Cabecera de la venta
+ */
+entity Factura {
+    fecha LocalDate required
+    total BigDecimal required
+    estado String required // PENDIENTE, PAGADA, ANULADA, etc.
+}
+
+/**
+ * Ítems de la factura
+ */
+entity DetalleFactura {
+    cantidad Integer required
+    precioUnitario BigDecimal required
+    subtotal BigDecimal required
+}
+
+/**
+ * Pagos de una factura (permite pagos parciales)
+ */
+entity Pago {
+    fechaPago LocalDate required
+    monto BigDecimal required
+    metodoPago String required // EFECTIVO, TRANSFERENCIA, TARJETA, etc.
+}
+
+// ======================
+// RELACIONES
+// ======================
+
+// Una factura pertenece a un cliente (N facturas -> 1 cliente)
+relationship ManyToOne {
+    Factura{cliente(nombre)} to Cliente
+}
+
+// Una factura tiene muchos detalles
+// Una factura tiene muchos pagos
+relationship OneToMany {
+    Factura{detalles} to DetalleFactura{factura}
+    Factura{pagos} to Pago{factura}
+}
+
+// Un producto puede estar en muchos detalles
+relationship ManyToOne {
+    DetalleFactura{producto(nombre)} to Producto
+}
+
+paginate Factura with pagination
+paginate Cliente, Producto, DetalleFactura, Pago with infinite-scroll
+
+service all with serviceImpl
+

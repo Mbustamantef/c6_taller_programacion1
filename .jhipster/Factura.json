@@ -1,0 +1,51 @@
+{
+  "annotations": {
+    "changelogDate": "20251119223623"
+  },
+  "applications": "*",
+  "documentation": "Cabecera de la venta",
+  "fields": [
+    {
+      "fieldName": "fecha",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "total",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Factura",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "detalleFactura",
+      "otherEntityRelationshipName": "factura",
+      "relationshipName": "detalles",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "pago",
+      "otherEntityRelationshipName": "factura",
+      "relationshipName": "pagos",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "cliente",
+      "relationshipName": "cliente",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
