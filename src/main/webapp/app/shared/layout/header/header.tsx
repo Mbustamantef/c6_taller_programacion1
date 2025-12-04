@@ -7,6 +7,7 @@ import LoadingBar from 'react-redux-loading-bar';
 
 import { AccountMenu, AdminMenu, EntitiesMenu } from '../menus';
 import { Brand, Home } from './header-components';
+import ButtonBack from 'app/modules/components/buttons/buttonBack';
 
 export interface IHeaderProps {
   isAuthenticated: boolean;
@@ -43,6 +44,7 @@ const Header = (props: IHeaderProps) => {
             {props.isAuthenticated && <EntitiesMenu />}
             {props.isAuthenticated && props.isAdmin && <AdminMenu showOpenAPI={props.isOpenAPIEnabled} />}
             <AccountMenu isAuthenticated={props.isAuthenticated} />
+            <ButtonBack />
           </Nav>
         </Collapse>
       </Navbar>

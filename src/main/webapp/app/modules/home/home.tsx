@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Alert, Col, Row } from 'reactstrap';
 
 import { useAppSelector } from 'app/config/store';
+import { login } from 'app/shared/reducers/authentication';
 
 export const Home = () => {
   const account = useAppSelector(state => state.authentication.account);
@@ -16,8 +17,8 @@ export const Home = () => {
         <span className="hipster rounded" />
       </Col>
       <Col md="9">
-        <h1 className="display-4">Welcome, Java Hipster!</h1>
-        <p className="lead">This is your homepage</p>
+        <h1 className="display-4">Bienvenido, {account?.login}</h1>
+        <p className="lead">Esta es la pagina principal</p>
         {account?.login ? (
           <div>
             <Alert color="success">You are logged in as user &quot;{account.login}&quot;.</Alert>
