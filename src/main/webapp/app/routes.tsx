@@ -15,6 +15,8 @@ import PrivateRoute from 'app/shared/auth/private-route';
 import ErrorBoundaryRoutes from 'app/shared/error/error-boundary-routes';
 import PageNotFound from 'app/shared/error/page-not-found';
 import { AUTHORITIES } from 'app/config/constants';
+import ProcesoClientes from 'app/modules/proceso-principal/proceso-principal';
+import ButtonBack from './modules/components/buttons/buttonBack';
 
 const loading = <div>loading ...</div>;
 
@@ -44,6 +46,7 @@ const AppRoutes = () => {
             }
           />
           <Route path="register" element={<Register />} />
+          <Route path="volver" element={<ButtonBack />} />
           <Route path="activate" element={<Activate />} />
           <Route path="reset">
             <Route path="request" element={<PasswordResetInit />} />
@@ -55,6 +58,14 @@ const AppRoutes = () => {
           element={
             <PrivateRoute hasAnyAuthorities={[AUTHORITIES.ADMIN]}>
               <Admin />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="proceso-clientes"
+          element={
+            <PrivateRoute hasAnyAuthorities={[AUTHORITIES.ADMIN, AUTHORITIES.USER]}>
+              <ProcesoClientes />
             </PrivateRoute>
           }
         />

@@ -26,3 +26,12 @@ export const Home = () => (
     </NavLink>
   </NavItem>
 );
+
+export const ProcesoClientesMenu = () => (
+  <NavItem>
+    <NavLink tag={Link} to="/proceso-clientes" className="d-flex align-items-center">
+      <FontAwesomeIcon icon="users" />
+      <span>Gestión Clientes</span>
+    </NavLink>
+  </NavItem>
+);
