@@ -7,10 +7,12 @@ import Factura from './factura';
 import FacturaDetail from './factura-detail';
 import FacturaUpdate from './factura-update';
 import FacturaDeleteDialog from './factura-delete-dialog';
+import FacturaNueva from './factura-nueva';
 
 const FacturaRoutes = () => (
   <ErrorBoundaryRoutes>
     <Route index element={<Factura />} />
+    <Route path="nueva" element={<FacturaNueva />} />
     <Route path="new" element={<FacturaUpdate />} />
     <Route path=":id">
       <Route index element={<FacturaDetail />} />

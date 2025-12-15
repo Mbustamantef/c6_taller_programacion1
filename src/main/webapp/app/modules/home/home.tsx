@@ -3,86 +3,226 @@ import './home.scss';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Alert, Col, Row } from 'reactstrap';
+import { Card, CardBody, Col, Row, Button, Container } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faUsers,
+  faChartLine,
+  faFileInvoice,
+  faBoxes,
+  faRocket,
+  faShieldAlt,
+  faBolt,
+  faUserCircle,
+  faSignInAlt,
+  faUserPlus,
+} from '@fortawesome/free-solid-svg-icons';
 
 import { useAppSelector } from 'app/config/store';
-import { login } from 'app/shared/reducers/authentication';
 
 export const Home = () => {
   const account = useAppSelector(state => state.authentication.account);
 
   return (
-    <Row>
-      <Col md="3" className="pad">
-        <span className="hipster rounded" />
-      </Col>
-      <Col md="9">
-        <h1 className="display-4">Bienvenido, {account?.login}</h1>
-        <p className="lead">Esta es la pagina principal</p>
-        {account?.login ? (
-          <div>
-            <Alert color="success">You are logged in as user &quot;{account.login}&quot;.</Alert>
-          </div>
-        ) : (
-          <div>
-            <Alert color="warning">
-              If you want to
-              <span>&nbsp;</span>
-              <Link to="/login" className="alert-link">
-                sign in
-              </Link>
-              , you can try the default accounts:
-              <br />- Administrator (login=&quot;admin&quot; and password=&quot;admin&quot;) <br />- User (login=&quot;user&quot; and
-              password=&quot;user&quot;).
-            </Alert>
+    <div className="home-modern">
+      <Container fluid>
+        {/* Hero Section */}
+        <Row className="hero-section">
+          <Col lg="12">
+            <div className="hero-content">
+              <div className="hero-badge">
+                <FontAwesomeIcon icon={faRocket} className="me-2" />
+                Sistema de Gestión Empresarial
+              </div>
+              <h1 className="hero-title">
+                Bienvenido, <span className="highlight">{account?.login || 'Invitado'}</span>
+              </h1>
+              <p className="hero-subtitle">
+                Gestiona tu negocio de manera eficiente con nuestra plataforma completa de administración y control
+              </p>
 
-            <Alert color="warning">
-              You don&apos;t have an account yet?&nbsp;
-              <Link to="/account/register" className="alert-link">
-                Register a new account
-              </Link>
-            </Alert>
-          </div>
+              {!account?.login && (
+                <div className="hero-actions">
+                  <Button tag={Link} to="/login" color="primary" size="lg" className="me-3">
+                    <FontAwesomeIcon icon={faSignInAlt} className="me-2" />
+                    Iniciar Sesión
+                  </Button>
+                  <Button tag={Link} to="/account/register" color="light" size="lg" outline>
+                    <FontAwesomeIcon icon={faUserPlus} className="me-2" />
+                    Registrarse
+                  </Button>
+                </div>
+              )}
+            </div>
+          </Col>
+        </Row>
+
+        {/* Status Card for Logged In Users */}
+        {account?.login && (
+          <Row className="mb-4">
+            <Col lg="12">
+              <Card className="status-card">
+                <CardBody>
+                  <div className="status-content">
+                    <div className="status-icon">
+                      <FontAwesomeIcon icon={faUserCircle} />
+                    </div>
+                    <div className="status-info">
+                      <h5>Sesión Activa</h5>
+                      <p className="mb-0">
+                        Has iniciado sesión como <strong>{account.login}</strong>
+                      </p>
+                    </div>
+                    <div className="status-badge">
+                      <span className="badge bg-success">Conectado</span>
+                    </div>
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
         )}
-        <p>If you have any question on JHipster:</p>
 
-        <ul>
-          <li>
-            <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer">
-              JHipster homepage
-            </a>
-          </li>
-          <li>
-            <a href="https://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener noreferrer">
-              JHipster on Stack Overflow
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" rel="noopener noreferrer">
-              JHipster bug tracker
-            </a>
-          </li>
-          <li>
-            <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
-              JHipster public chat room
-            </a>
-          </li>
-          <li>
-            <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer">
-              follow @jhipster on Twitter
-            </a>
-          </li>
-        </ul>
+        {/* Features Section */}
+        <Row className="features-section">
+          <Col lg="12" className="mb-4">
+            <h2 className="section-title">
+              <FontAwesomeIcon icon={faBolt} className="me-2" />
+              Funcionalidades Principales
+            </h2>
+            <p className="section-subtitle">Todo lo que necesitas para gestionar tu empresa en un solo lugar</p>
+          </Col>
 
-        <p>
-          If you like JHipster, don&apos;t forget to give us a star on{' '}
-          <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
-            GitHub
-          </a>
-          !
-        </p>
-      </Col>
-    </Row>
+          <Col lg="3" md="6" className="mb-4">
+            <Card className="feature-card">
+              <CardBody>
+                <div className="feature-icon feature-icon-primary">
+                  <FontAwesomeIcon icon={faUsers} />
+                </div>
+                <h4>Gestión de Clientes</h4>
+                <p>Administra tu cartera de clientes, historial de compras y datos de contacto de forma centralizada.</p>
+                {account?.login && (
+                  <Button tag={Link} to="/proceso-clientes" color="primary" size="sm" block>
+                    Ir a Clientes
+                  </Button>
+                )}
+              </CardBody>
+            </Card>
+          </Col>
+
+          <Col lg="3" md="6" className="mb-4">
+            <Card className="feature-card">
+              <CardBody>
+                <div className="feature-icon feature-icon-success">
+                  <FontAwesomeIcon icon={faFileInvoice} />
+                </div>
+                <h4>Facturación</h4>
+                <p>Genera facturas, controla pagos y mantén un registro detallado de todas tus transacciones.</p>
+                {account?.login && (
+                  <Button tag={Link} to="/factura" color="success" size="sm" block>
+                    Ver Facturas
+                  </Button>
+                )}
+              </CardBody>
+            </Card>
+          </Col>
+
+          <Col lg="3" md="6" className="mb-4">
+            <Card className="feature-card">
+              <CardBody>
+                <div className="feature-icon feature-icon-info">
+                  <FontAwesomeIcon icon={faBoxes} />
+                </div>
+                <h4>Inventario</h4>
+                <p>Controla tu stock de productos, precios y disponibilidad en tiempo real.</p>
+                {account?.login && (
+                  <Button tag={Link} to="/producto" color="info" size="sm" block>
+                    Ver Productos
+                  </Button>
+                )}
+              </CardBody>
+            </Card>
+          </Col>
+
+          <Col lg="3" md="6" className="mb-4">
+            <Card className="feature-card">
+              <CardBody>
+                <div className="feature-icon feature-icon-warning">
+                  <FontAwesomeIcon icon={faChartLine} />
+                </div>
+                <h4>Reportes</h4>
+                <p>Visualiza estadísticas y métricas importantes para tomar mejores decisiones de negocio.</p>
+                {account?.login && (
+                  <Button tag={Link} to="/admin/metrics" color="warning" size="sm" block disabled>
+                    Próximamente
+                  </Button>
+                )}
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+
+        {/* Info Section for Non-logged Users */}
+        {!account?.login && (
+          <Row className="info-section">
+            <Col lg="6" className="mb-4">
+              <Card className="info-card info-card-primary">
+                <CardBody>
+                  <h4>
+                    <FontAwesomeIcon icon={faShieldAlt} className="me-2" />
+                    Cuentas de Prueba
+                  </h4>
+                  <p className="mb-3">Puedes probar el sistema con las siguientes credenciales:</p>
+                  <div className="credential-box">
+                    <div className="credential-item">
+                      <strong>Administrador</strong>
+                      <div className="credential-details">
+                        <span>Usuario: admin</span>
+                        <span>Contraseña: admin</span>
+                      </div>
+                    </div>
+                    <div className="credential-item">
+                      <strong>Usuario</strong>
+                      <div className="credential-details">
+                        <span>Usuario: user</span>
+                        <span>Contraseña: user</span>
+                      </div>
+                    </div>
+                  </div>
+                  <Button tag={Link} to="/login" color="primary" block className="mt-3">
+                    <FontAwesomeIcon icon={faSignInAlt} className="me-2" />
+                    Iniciar Sesión Ahora
+                  </Button>
+                </CardBody>
+              </Card>
+            </Col>
+
+            <Col lg="6" className="mb-4">
+              <Card className="info-card info-card-secondary">
+                <CardBody>
+                  <h4>
+                    <FontAwesomeIcon icon={faRocket} className="me-2" />
+                    ¿Nuevo aquí?
+                  </h4>
+                  <p className="mb-3">Crea tu cuenta y empieza a utilizar todas las funcionalidades del sistema de gestión empresarial.</p>
+                  <ul className="benefits-list">
+                    <li>Gestión completa de clientes</li>
+                    <li>Sistema de facturación integrado</li>
+                    <li>Control de inventario</li>
+                    <li>Reportes y estadísticas</li>
+                    <li>Interfaz moderna e intuitiva</li>
+                  </ul>
+                  <Button tag={Link} to="/account/register" color="success" block className="mt-3">
+                    <FontAwesomeIcon icon={faUserPlus} className="me-2" />
+                    Crear Cuenta Gratis
+                  </Button>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+        )}
+      </Container>
+    </div>
   );
 };
 

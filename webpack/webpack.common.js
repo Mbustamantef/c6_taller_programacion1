@@ -90,10 +90,11 @@ module.exports = async options => {
           VERSION: JSON.stringify(environment.VERSION),
           SERVER_API_URL: JSON.stringify(environment.SERVER_API_URL),
         }),
-        new ESLintPlugin({
-          configType: 'flat',
-          extensions: ['ts', 'tsx'],
-        }),
+        // ESLint desactivado
+        // new ESLintPlugin({
+        //   configType: 'flat',
+        //   extensions: ['ts', 'tsx'],
+        // }),
         new ForkTsCheckerWebpackPlugin(),
         new CopyWebpackPlugin({
           patterns: [

@@ -39,11 +39,11 @@ public class Factura implements Serializable {
     @Column(name = "estado", nullable = false)
     private String estado;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "factura")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "factura", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties(value = { "producto", "factura" }, allowSetters = true)
     private Set<DetalleFactura> detalles = new HashSet<>();
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "factura")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "factura", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties(value = { "factura" }, allowSetters = true)
     private Set<Pago> pagos = new HashSet<>();
 

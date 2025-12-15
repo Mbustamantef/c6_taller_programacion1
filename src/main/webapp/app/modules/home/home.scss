@@ -1,10 +1,411 @@
 /* ==========================================================================
-Main page styles
+Modern Home Page Styles
 ========================================================================== */
-.hipster {
-  display: inline-block;
-  width: 100%;
-  height: 497px;
-  background: url('/content/images/jhipster_family_member_1.svg') no-repeat center top;
-  background-size: contain;
+
+.home-modern {
+  min-height: calc(100vh - 100px);
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 3rem 0;
+
+  // Hero Section
+  .hero-section {
+    margin-bottom: 4rem;
+    text-align: center;
+
+    .hero-content {
+      padding: 3rem 1rem;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+      animation: fadeInDown 0.6s ease-out;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.6s ease-out 0.2s both;
+
+      .highlight {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: #7f8c8d;
+      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+      animation: fadeInUp 0.6s ease-out 0.4s both;
+    }
+
+    .hero-actions {
+      animation: fadeInUp 0.6s ease-out 0.6s both;
+
+      .btn {
+        padding: 0.75rem 2rem;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+      }
+    }
+  }
+
+  // Status Card
+  .status-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background: white;
+    animation: fadeIn 0.6s ease-out;
+
+    .status-content {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .status-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .status-info {
+      flex-grow: 1;
+
+      h5 {
+        margin: 0;
+        color: #2c3e50;
+        font-weight: 700;
+      }
+
+      p {
+        color: #7f8c8d;
+        margin: 0.25rem 0 0;
+      }
+    }
+
+    .status-badge {
+      .badge {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+    }
+  }
+
+  // Features Section
+  .features-section {
+    margin-bottom: 3rem;
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #7f8c8d;
+      margin-bottom: 3rem;
+    }
+  }
+
+  .feature-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+    background: white;
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-body {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: white;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+      &.feature-icon-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+
+      &.feature-icon-success {
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      }
+
+      &.feature-icon-info {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      }
+
+      &.feature-icon-warning {
+        background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      }
+    }
+
+    h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: #7f8c8d;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  // Info Section
+  .info-section {
+    .info-card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      background: white;
+      height: 100%;
+
+      .card-body {
+        padding: 2rem;
+      }
+
+      h4 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        color: #7f8c8d;
+        line-height: 1.6;
+      }
+
+      .credential-box {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 1.5rem;
+
+        .credential-item {
+          margin-bottom: 1rem;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          strong {
+            display: block;
+            color: #2c3e50;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+          }
+
+          .credential-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+
+            span {
+              color: #7f8c8d;
+              font-family: 'Courier New', monospace;
+              background: white;
+              padding: 0.5rem;
+              border-radius: 5px;
+              font-size: 0.9rem;
+            }
+          }
+        }
+      }
+
+      .benefits-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          padding: 0.75rem 0;
+          border-bottom: 1px solid #e9ecef;
+          color: #2c3e50;
+          position: relative;
+          padding-left: 2rem;
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          &::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #38ef7d;
+            font-weight: 700;
+            font-size: 1.2rem;
+          }
+        }
+      }
+
+      .btn {
+        border-radius: 10px;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+      }
+    }
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive Design
+@media (max-width: 992px) {
+  .home-modern {
+    .hero-section {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .hero-actions {
+        .btn {
+          width: 100%;
+          margin-bottom: 1rem;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    .feature-card {
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .home-modern {
+    padding: 2rem 0;
+
+    .hero-section {
+      margin-bottom: 2rem;
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+    }
+
+    .features-section {
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+
+    .status-card {
+      .status-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  }
 }
